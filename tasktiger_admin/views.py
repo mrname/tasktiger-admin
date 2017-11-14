@@ -40,7 +40,7 @@ class TaskTigerView(BaseView):
         n, tasks = Task.tasks_from_queue(self.tiger, queue, state, limit=LIMIT)
         for task in tasks:
             task.retry()
-        return redirect(url_for('.queue_detail', queue=queue, state=state))
+        return redirect(url_for('.queue_detail', queue=queue, state=state, _external=True))
 
     @expose('/<queue>/<state>/<task_id>/')
     def task_detail(self, queue, state, task_id):
